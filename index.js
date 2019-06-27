@@ -10,17 +10,15 @@ request('https://www.americanas.com.br/produto/133718358/smart-tv-led-50-lg-50uk
     const productId = $('.brNcBx')
     const breadCrumb = $('.product-breadcrumb')
     const productTitle = $('#product-name-default')
-    // const productImg = $('.ImageUI-ltqbj-1 ijVuml')
+    const productImg = $('.bFPzMY')
     const productSeller = $('.seller-00776574000660')
     const productPrice = $('.sales-price')
 
     console.log(productId.text())
     console.log(breadCrumb.text())
     console.log(productTitle.text())
-    // console.log(productImg.text())
+    console.log(productImg.attr("src"))
     console.log(productSeller.html())
     console.log(productPrice.html())
   }
 })
-
-133718358
