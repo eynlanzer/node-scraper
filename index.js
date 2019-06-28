@@ -1,4 +1,4 @@
-const request = require('request');
+const request = require('request'); // HTTP request
 const cheerio = require('cheerio');
 
 // Check for errors (200 = succesful HTTP response)
@@ -7,18 +7,31 @@ request('https://www.americanas.com.br/produto/133718358/smart-tv-led-50-lg-50uk
     // console.log(html); // load page html
     const $ = cheerio.load(html);
 
-    const productId = $('.brNcBx')
-    const breadCrumb = $('.product-breadcrumb')
-    const productTitle = $('#product-name-default')
-    const productImg = $('.bFPzMY')
-    const productSeller = $('.seller-00776574000660')
-    const productPrice = $('.sales-price')
+    const productId = $('.brNcBx').text()
 
-    console.log(productId.text())
-    console.log(breadCrumb.text())
-    console.log(productTitle.text())
-    console.log(productImg.attr("src"))
-    console.log(productSeller.html())
-    console.log(productPrice.html())
+    // push each breadcrumb text into an empty array
+    const breadCrumbs = [];
+    $('.fbPVXQ').each(function () {
+      breadCrumbs.push($(this).text());  
+    })
+
+    const productTitle = $('#product-name-default').text()
+
+    // scrape the image url
+    const productImg = $('.bFPzMY').attr("src")
+
+    // scraped by html to avoid duplicates
+    const productSeller = $('.seller-00776574000660').html()
+
+    const productPrice = $('.haZIvY').text()
+
+    // print to the Terminal
+    console.log(productId)
+    console.log(breadCrumbs)
+    console.log(productTitle)
+    console.log(productImg)
+    console.log(productSeller)
+    console.log(productPrice)
   }
-})
+});
+
